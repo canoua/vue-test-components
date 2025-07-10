@@ -1,15 +1,20 @@
 <template>
-   <p>{{ args }}</p>
-   <!-- <p>{{ surname }}</p> -->
-   <!-- <p>{{ age }}</p> -->
+   <!-- <p>{{ name }}</p>
+   <p>{{ surname }}</p>
+   <p>{{ age }}</p> -->
 </template>
 
 <script>
   export default {
-    props: ['name', 'surname', 'age'],
+    props: {
+    // 'id': Number,
+    'name': String, 
+    'surname': String, 
+    'age': Number
+    },
     data() {
       return {
-        args
+       
       }
     }
   }
