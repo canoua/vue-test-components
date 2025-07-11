@@ -5,11 +5,6 @@
 
 <script>
   export default {
-    data() {
-      return{
-        
-      }
-    },
     methods: {
       handle() {
         this.$emit('show', 'xxx', 'yyy');
