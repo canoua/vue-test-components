@@ -1,52 +1,43 @@
-<script >
-  // import Employee from './components/Employee.vue';
+<template>
+  <div>
+    <User @my-event="handleMyEvent" @btn1-event="handleBtn1" @btn2-event="handleBtn2" />
+    <p>{{ messageFromChild }}</p>
+    <p>{{ messageFromBtn1 }}</p>
+    <p>{{ messageFromBtn2 }}</p>
+    <ParamsEvent  @show="func('Andrew', 'Kar')"/>
+
+  </div>
+</template>
+
+<script>
   import User from './components/User.vue';
-  export default {
+  import ParamsEvent from './components/ParamsEvent.vue';
+  
+  export default {  
+    components: {
+      User,
+      ParamsEvent
+    },
     data() {
       return {
-        users: [
-          {
-            id: 1,
-            name: 'name1',
-            surn: 'surn1'
-          },
-          {
-            id: 2,
-            name: 'name2',
-            surn: 'surn2'
-          },
-          {
-            id: 3,
-            name: 'name3',
-            surn: 'surn3'
-          },
-        ],
+        messageFromChild: '',
+        messageFromBtn1: '',
+        messageFromBtn2: ''
+      }
+    },
+    methods: {
+      handleMyEvent(data) {
+        this.messageFromChild = data.message;
+      },
+      handleBtn1(data) {
+        this.messageFromBtn1 = data.message
+      },
+      handleBtn2(data) {
+        this.messageFromBtn2 = data.message
+      },
+      func(arg1, arg2) {
+        console.log(arg1, arg2);
       }
     }
   }
-  
 </script>
-
-<template>
-	<User
-		v-for="user in users"
-		:name="user.name"
-		:surn="user.surn"
-		:key="user.id"
-	>
-    <p>
-      {{ user.name }}
-    </p>
-    <p>
-      {{ user.id }}
-    </p>
-    <p>
-      {{ user.surn }}
-    </p>  
-    <hr>
-  </User>
-</template>
-
-<style scoped>
-
-</style>
